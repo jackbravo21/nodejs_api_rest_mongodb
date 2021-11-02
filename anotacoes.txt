@@ -1,0 +1,105 @@
+pai: ApiBasico.
+
+npm init -y
+npm install express --save
+yarn add nodemon --global
+
+//https://cloud.mongodb.com/v2/LinkDoMeuBanco/database/users
+//https://cloud.mongodb.com/v2/LinkDoMeuBanco
+//string de conexao --> mongodb+link
+//https://mongoosejs.com :> 
+
+=======================================================
+npm install mongoose --save
+https://mongoosejs.com
+-------------------------------------------------------
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/test');
+
+const Cat = mongoose.model('Cat', { name: String });
+
+const kitty = new Cat({ name: 'Zildjian' });
+kitty.save().then(() => console.log('meow'));
+=======================================================
+
+npm install body-parser --save              //estensao necessaria para usar o post com json no body;
+
+
+//string de conexao --> mongodb+link
+
+
+- GET(QUERY): para enviar uma query para o GET no URL, usar ? como no PHP:
+http://localhost:3000?nome=Jack&idade=35
+
+- POST: No post eu posso enviar um body (ate uma lista):
+{
+    "nome": "Jack",
+    "idade": "35"
+}
+
+
+- Criptografia (bcrypt):
+npm install bcrypt --save
+
+
+==================================================
+- async e await: o callback espera para proseguir;
+Ao ser usado o async e deve ter um try catch;
+A funcao async deve conter um await como resposta;
+Todo async contem um await;
+--------------------------------------------------
+router.get("/", async(req, res) => 
+{
+    try
+    {
+        const users = await Users.find({});
+        return res.send(users);
+    }
+    catch(err)
+    {
+        return res.send({ error: "Erro na consulta de usuarios" });
+    }
+});
+==================================================
+
+TOKEN:
+- "jsonwebtoken";
+npm install jsonwebtoken --save
+- Toda a vez que um usuario for criado, ele vai receber um token, e toda a vez que ele se autenticar, ele vai receber um token novo;
+- Devo criar uma funcao para criar o token;
+- Posso usar o token para autenticar o usuario, e enviar informacoes sobre o usuario;
+
+==================================================
+
+Status de respostas:
+
+200 - OK (informa que deu certo a operacao);
+201 - Created (informa alem de que deu certo, que executou uma operacao);
+202 - Accepted (eu aceitei sua requisicao, mas ainda nao processei, estou processando);
+
+400 - Bad request (deu erro, deu ruim);
+401 - Unauthorized -- Autenticacao, tem carater temporario (Voce nao ta autenticado ou esta autenticado incorretamente, mas se enviar a autenticacao certa, ele muda);
+403 - Forbidden -- Autorizacao, tem carater permanente (Eu sei quem vc eh, estou vendo seu token e seu usuario, mas vc nao tem autorizacao, nao adianta trocar senha nem token);
+
+500 - Internal server error (erro geral);
+501 - Not implemented (a API nao suporta essa funcionalidade que foi solicitada);
+503 - Service Unavaliable (a API executa a operacao, mas no momento esta indisponivel, foi correto o envio, mas no momento estamos em manutencao);
+
+==================================================
+
+Setar variaveis do NodeJS no console:
+> set NODE_ENV=prod
+
+
+
+
+
+
+
+
+
+
+
+
+
+
